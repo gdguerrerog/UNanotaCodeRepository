@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1567893076 source:/home/crazyjungler/Documentos/Programacion Competitiva/RPC/07092019/Uberwatch/main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
