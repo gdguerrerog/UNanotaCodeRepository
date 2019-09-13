@@ -11,7 +11,7 @@ string next(string str){
         current = str[i];
         i++;
         my_count = 1;
-        for(; i <= 1000 && i < str.length() && str[i] == current; i++) my_count++;
+        for(; i < str.length() && str[i] == current; i++) my_count++;
         exit += std::to_string(my_count);
         exit += current;
     }
