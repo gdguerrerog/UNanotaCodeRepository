@@ -23,6 +23,7 @@ void solve(string DNA1, string DNA2){
         tmp = past;
         past = current;
         current = tmp;
+        s
     }
     if(current[n] >= minAcepted)  cout << "Long lost brothers D:\n";
     else cout << "Not brothers :(\n";
