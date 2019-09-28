@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569543159 source:/home/german/Documentos/UNanotaCodeRepository/Excercises/Nacionales 2019/Justice League Counter Strategy/main.cpp
+	<iostream>
+	<vector>
+	<bits/stdc++.h>
+
