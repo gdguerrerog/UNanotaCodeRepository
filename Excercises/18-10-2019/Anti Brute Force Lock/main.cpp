@@ -1,15 +1,39 @@
 #include <iostream>
 #include <vector>
-#include <map>
 
 using namespace std;
 
+struct Node{
+    int arrVal, val;
+
+    bool operator !=(Node const& other){
+        return arrVal != other.arrVal;
+    }
+
+    bool operator ==(Node const& other){
+        return arrVal == other.arrVal;
+    }
+};
+
 struct Edge{
-    int p1, p2, c;
+    Node p1, p2;
+    int c;
     bool operator < (Edge const& other){
         return c < other.c;
     }
 };
+
+
+
+Node findFather(Node node, vector<Node> DS){
+    if(DS[node.arrVal] == node) return node;
+    return DS[node.arrVal] = findFather(DS[node.arrVal], DS);
+}
+
+void mergeDS(Node node1, Node node2, vector<Node> DS){
+    Node a = findFather(node1, DS), b = findFather(node2, DS);
+    if(a != b) DS[a.arrVal] = b;
+}
 
 
 int calcCost(int a, int b){
@@ -22,27 +46,36 @@ int calcCost(int a, int b){
 
 int main()
 {
-    int T, N, cost, cCount, int;
+    int T, N, cost, minTo0, input;
     cin >> T;
-    vector<int> DS;
+    vector<Node> DS;
     vector<Edge> graph;
-    Edge tmp;
-    map<int, int> keys;
-    vector<int> nodes;
+    vector<Node> nodes;
 
     while(T--){
-        cost = cCount = 0;
+        cost = 0;
+        minTo0 = 25;
         cin >> N;
         DS.resize(N);
         nodes.resize(N);
-        keys.clear();
 
-        for(int i = 0; i < N; i++)  DS[i] = i;
         for(int i = 0; i < N; i++) {
             cin >> input;
-            for(int node : nodes){
-
+            Node cNode;
+            cNode.arrVal = i;
+            cNode.val = input;
+            DS[i] = cNode;
+            minTo0 = min(minTo0, calcCost(cNode.val, 0));
+            for(Node node : nodes){
+                Edge tmp;
+                tmp.c = calcCost(node.val, cNode.val);
+                tmp.p1 = node;
+                tmp.p2 = cNode;
+                graph.push_back(tmp);
             }
+
+            nodes.push_back(cNode);
+
         }
 
 
