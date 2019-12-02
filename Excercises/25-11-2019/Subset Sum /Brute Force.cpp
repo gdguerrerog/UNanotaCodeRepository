@@ -2,8 +2,7 @@
 
 using namespace std;
 
-unsigned long long solution;
-long long toSum, values[40];
+long long solution, toSum, values[40];
 int N;
 
 void solve(long long cSum, int offset){
@@ -23,3 +22,4 @@ int main(){
     }
     return 0;
 }
+
